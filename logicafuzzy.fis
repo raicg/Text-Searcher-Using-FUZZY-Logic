@@ -1,0 +1,56 @@
+[System]
+Name='logicafuzzy'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='pontos'
+Range=[0 100000]
+NumMFs=3
+MF1='pouco':'trapmf',[-4.5 -0.5 30 80]
+MF2='medio_ooo':'trimf',[70 100 140]
+MF3='muito':'trapmf',[130 10000 101000 101000]
+
+[Input2]
+Name='porcentagemword'
+Range=[0 1]
+NumMFs=5
+MF1='muitopouco':'trapmf',[-0.225 -0.025 0.0806878306878306 0.18]
+MF2='pouco':'trimf',[0.15 0.3 0.45]
+MF3='medio':'trimf',[0.4 0.5 0.6]
+MF4='muito':'trimf',[0.55 0.65 0.75]
+MF5='bemmuito':'trapmf',[0.7 0.8 1.07 1.16]
+
+[Output1]
+Name='relevancia'
+Range=[0 1]
+NumMFs=4
+MF1='baixa':'trapmf',[-0.3 0 0.1 0.3]
+MF2='medio-baixa':'trimf',[0.15 0.3 0.45]
+MF3='medio-alta':'trimf',[0.4 0.6 0.8]
+MF4='alta':'trapmf',[0.65 0.9 1 1.1]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+1 3, 2 (1) : 1
+1 4, 3 (1) : 1
+1 5, 4 (1) : 1
+2 1, 1 (1) : 1
+2 2, 1 (1) : 1
+2 3, 2 (1) : 1
+2 4, 3 (1) : 1
+2 5, 4 (1) : 1
+3 1, 1 (1) : 1
+3 2, 2 (1) : 1
+3 3, 3 (1) : 1
+3 4, 4 (1) : 1
+3 5, 4 (1) : 1
