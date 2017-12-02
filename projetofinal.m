@@ -264,5 +264,6 @@ disp('pesquisa concluida!')
 
 relevancia()
 disp('Voce pode encontrar um resultado detalhado para sua pesquisa na pasta resultados')
-
+promptMessage = sprintf('Busca realizada com sucesso!\n\n\nOs resultados obtidos encontram-se na pasta resultados.\n\n\n Produzido por: Raí Gondim\n');
+button = questdlg(promptMessage, 'BUSCADOR', 'OK', 'OK');
 
