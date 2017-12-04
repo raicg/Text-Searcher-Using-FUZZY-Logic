@@ -54,10 +54,10 @@ for z = 1:qntdtextos
                     maiorporcentagem = 1.0;
                     porcentagemword = 1.0;
                     pontospalavra = 500;
-                    palavras_relevantes{contador} = linesplited(i);
+                    palavras_relevantes{contador} = str(linesplited(i));
                     palavras_relevantes_porcentagem(contador) = porcentagemword;
                     palavras_relevantes_pontos(contador) = pontospalavra;
-                    contagem_palavras_relevantes(qntdtextos) = contagem_palavras_relevantes(qntdtextos) +1;
+                    contagem_palavras_relevantes(z) = contagem_palavras_relevantes(z) +1;
                     contador = contador+1;
                     
                     
@@ -125,12 +125,6 @@ for z = 1:qntdtextos
                             porcentagemword2 = flag/maiorpalavra;
                             if porcentagemword2 > porcentagemword
                                 porcentagemword = porcentagemword2;
-                            elseif porcentagemword2 <= porcentagemword && pontospalavra >= 40
-                                palavras_relevantes{contador} = linesplited(i);
-                                palavras_relevantes_porcentagem(contador) = porcentagemword;
-                                contagem_palavras_relevantes(qntdtextos) = contagem_palavras_relevantes(qntdtextos) +1;
-                                contador = contador+1;
-                                
                             end
                             
                             if porcentagemword > maiorporcentagem
@@ -166,17 +160,23 @@ for z = 1:qntdtextos
                     end
                     
                     if pontospalavra >= pontosminimos
+                        if pontospalavra >0
+                            palavras_relevantes{contador} = linesplited(i);
+                            palavras_relevantes_porcentagem(contador) = porcentagemword;
+                            contagem_palavras_relevantes(z) = contagem_palavras_relevantes(z) +1;
+                            contador = contador+1;
+                        end
                         if superflag == 1
                             pontos = pontos+300;
                             pontospalavra = 300;
-                            palavras_relevantes_pontos(contagem-1) = pontospalavra;
+                            palavras_relevantes_pontos(contador-1) = pontospalavra;
                             superflag = 0;
                             l = 0;
                             flagvalid = 0;
                         else
                             pontos = pontos+pontospalavra;
-                            if pontospalavra>=40
-                                palavras_relevantes_pontos(contagem-1) = pontospalavra;
+                            if pontospalavra > 0
+                                palavras_relevantes_pontos(contador-1) = pontospalavra;
                             end
                             l=0;
                             flagvalid = 0;
